@@ -1,29 +1,34 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
 
 Vue.use(VueRouter)
 
+// 默认路由
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/About.vue')
-    }
+    path: '/login',
+    name: 'Login',
+    hidden: true,
+    component: () => import('@/views/login')
   }
 ]
 
-const router = new VueRouter({
+// 创建路由对象
+const createRouter = () => new VueRouter({
+  mode: 'hash',
+  scrollBehavior: () => ({ y: 0 }),
   routes
 })
+
+
+// 创建一个需要使用的路由器
+const router = createRouter()
+
+// 重置路由
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
 export default router
