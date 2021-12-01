@@ -27,7 +27,7 @@ export function getMenu(userId) {
 // 遍历routes，将routes中的组件导入
 function filterRouter(routes) {
     const asyncRoutes = routes.filter(route => {
-        route.component = loadView(route.component)
+        route.component = loadView(route.component.toLowerCase())
         // TODO
         // if (route.icon != null) {
         //   route.icon = 'iconfont' + route.icon

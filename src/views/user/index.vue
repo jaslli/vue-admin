@@ -5,6 +5,7 @@
 <script>
 import Page from '@/components/page'
 export default {
+  name: 'User',
   components: { Page },
   data() {
     return {

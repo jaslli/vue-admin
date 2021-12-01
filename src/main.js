@@ -48,6 +48,8 @@ new Vue({
     return h(App)
   },
   created() {
-    getMenu(store.getters.userId)
+    if (store.getters.userId) {
+      getMenu(store.getters.userId)
+    }
   }
 }).$mount('#app')

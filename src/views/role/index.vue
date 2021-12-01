@@ -5,6 +5,7 @@
 <script>
 import Page from '@/components/page'
 export default {
+  name: 'Role',
   components: { Page },
   data() {
     return {

@@ -1,10 +1,10 @@
 <template>
   <div class="header">
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item 
+      <!-- <el-breadcrumb-item 
         v-for='(item,index) in matched' 
         key="item"
-      >
+      > -->
         首页
       </el-breadcrumb-item>
     </el-breadcrumb>
