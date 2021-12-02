@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container" v-loading="loading">
     <div class="login-wrapper">
       <div class="login-container-left">
         <img src="@/assets/acg.png">
@@ -19,7 +19,12 @@
           <el-form-item prop="password">
             <el-input v-model="loginForm.password" placeholder="密码" type="password" autocomplete="off" />
           </el-form-item>
-          <input class="submit" type="submit" value="Login" @click="handleLogin">
+          <input 
+            class="submit"
+            type="submit" 
+            value="Login"
+            @click="handleLogin"
+          >
         </div>
       </el-form>
     </div>
@@ -33,6 +38,7 @@
 
 export default {
   data() {
+    // 用户名的校验规则
     var validateUsername = (rule, value, callback) => {
       if (this.loginForm.username === '') {
         callback(new Error('请输入用户名'))
@@ -40,7 +46,7 @@ export default {
         callback()
       }
     }
-
+    // 密码的校验规则
     var validatePassword = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
@@ -53,27 +59,35 @@ export default {
       }
     }
     return {
+      // 登录列表
       loginForm: {
         username: '',
         password: ''
       },
+      // 校验规则
       rules: {
         username: { validator: validateUsername, trigger: 'blur' },
         password: { validator: validatePassword, trigger: 'blur' }
-      }
+      },
+      // loading加载效果
+      loading: false
     }
   },
   methods: {
+    // 登录事件
     handleLogin() {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
+          this.loading = true
           this.$store
             .dispatch("user/doLogin", this.loginForm)
             .then(() => {
               this.$message.success("登录成功");
               this.$router.push({ path: '/' });
+              this.loading = false
             })
             .catch((error) => {
+              this.loading = false
               console.log(error)
             });
         } else {

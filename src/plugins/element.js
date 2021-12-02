@@ -23,7 +23,8 @@ import {
     Col,
     avatar,
     tabPane,
-    main
+    main,
+    Loading
 } from 'element-ui'
 
 Vue.use(Button)
@@ -50,6 +51,7 @@ Vue.use(Col);
 Vue.use(avatar);
 Vue.use(tabPane);
 Vue.use(main);
+Vue.use(Loading);
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm;

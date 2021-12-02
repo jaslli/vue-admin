@@ -17,7 +17,7 @@
       </span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>
-          <el-button class="button" type="text">个人中心</el-button>
+          <el-button class="button" type="text" @click="toAbout">个人中心</el-button>
         </el-dropdown-item>
         <el-dropdown-item>
           <el-button class="button" type="text" @click="doLogout">退出登录</el-button>
@@ -56,6 +56,7 @@ export default {
     }
   },
   methods: {
+    // 注销登录
     doLogout() {
       this.$confirm('确认退出吗？', '提示', {
         confirmButtonText: '确定',
@@ -71,6 +72,12 @@ export default {
       }).catch((error) => {
         this.$message.error(error)
       })
+    },
+    // 进入个人中心
+    toAbout() {
+      if (this.$route.path !== '/about') {
+        this.$router.push({ path: '/about' })
+      }
     }
   }
 }

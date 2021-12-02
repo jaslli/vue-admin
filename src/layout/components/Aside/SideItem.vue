@@ -12,7 +12,6 @@
         </el-menu-item>
       </el-submenu>
     </template>
-
     <el-menu-item v-else index="item.path">
       <i class="item.icon" />
       <span slot="title">{{ item.title }}</span>

@@ -13,14 +13,14 @@
       v-for="menu in menuList"
       :key="menu.id"
       :index="menu.path"
-      v-if="menu.children.length === 0"
+      v-if="menu.children.length === 0 && !menu.hidden"
       @click="addTags(menu.title, menu.path)"
     >
       <i :class="menu.icon" />
       <span slot="title">{{ menu.title }}</span>
     </el-menu-item>
     <!-- 有子菜单的情况 -->
-    <el-submenu v-else :index="menu.id">
+    <el-submenu v-else-if="!menu.hidden" :index="menu.id">
       <!-- 子菜单的父级 -->
       <template slot="title">
         <i :class="menu.icon" />
