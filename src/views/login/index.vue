@@ -73,8 +73,8 @@ export default {
               this.$message.success("登录成功");
               this.$router.push({ path: '/' });
             })
-            .catch(() => {
-              this.$message.error("登录异常");
+            .catch((error) => {
+              console.log(error)
             });
         } else {
           this.$message.error("请正确输入用户名与密码");
@@ -92,6 +92,7 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
+  overflow: hidden;
   background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%) no-repeat;
 }
 

@@ -60,7 +60,7 @@ const actions = {
 				// 获取用户菜单
 				await getMenu(id)
 				resolve()
-			}).catch(error => {
+			}).catch(() => {
 				reject(error)
 			})
 		})

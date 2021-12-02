@@ -5,12 +5,8 @@
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
   >
-    <!-- 首页以及LOGO -->
+    <!-- LOGO -->
     <Logo />
-    <el-menu-item index="/">
-      <i class="el-icon-s-home" />
-      <span slot="title">首页</span>
-    </el-menu-item>
     <!-- 其他菜单 -->
     <!-- 无子菜单的情况 -->
     <el-menu-item
@@ -60,6 +56,7 @@ export default {
     this.menuList = this.$store.getters.menuList;
   },
   methods: {
+    // 头部导航条的添加
     addTags(title, path) {
       const one = {
         title: title,
@@ -72,6 +69,9 @@ export default {
           flag = false;
         }
       });
+      if (one.name === '/') {
+        flag = false;
+      }
       if (flag) {
         list.push(one);
         this.$store.commit("tab/SET_EDITABLETABS", list);

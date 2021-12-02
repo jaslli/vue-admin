@@ -20,13 +20,15 @@ export function getMenu(userId) {
         })
         store.commit('user/SET_MENULIST', userList)
     }).catch(error => {
-        this.$message.error(error)
+        console.log(error)
     })
 }
 
 // 遍历routes，将routes中的组件导入
 function filterRouter(routes) {
     const asyncRoutes = routes.filter(route => {
+        route.meta = { }
+        route.meta.title = route.title
         route.component = loadView(route.component.toLowerCase())
         // TODO
         // if (route.icon != null) {

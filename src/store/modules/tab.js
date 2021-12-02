@@ -18,18 +18,17 @@ const mutations = {
 const actions = {
 
     // 删除标签
-    removeTab({
-        commit,
-        state
-    }, targetName) {
+    removeTab({ commit, state }, targetName) {
         const tabs = state.editableTabs
         let activeName = state.editableTabsValue
         if (activeName === targetName) {
             tabs.forEach((tab, index) => {
                 if (tab.name === targetName) {
-                    const nextTab = tabs[index + 1] || tabs[index - 1]
+                    const nextTab = tabs[index - 1] || tabs[index + 1]
                     if (nextTab) {
                         activeName = nextTab.name
+                    } else {
+                        activeName = '/'
                     }
                 }
             })

@@ -23,32 +23,33 @@
 <script>
 export default {
   name: 'Tabs',
-  data() {
-    return {
-      tabIndex: '2'
-    }
-  },
   computed: {
     editableTabs: {
       get() { return this.$store.getters.editableTabs },
       set() {}
     },
     editableTabsValue: {
-      get() { return this.$store.getters.editableTabsValue },
+      get() { return this.$route.path },
       set() {}
     }
   },
   create() {
-    this.$editableTabs = this.$store.getters.editableTabs
+    this.editableTabs = this.$store.getters.editableTabs
     this.editableTabsValue = this.$store.getters.editableTabsValue
   },
   methods: {
+    // 点击标签进行页面跳转
     clickTab(target) {
-      this.$router.push({ path: target.name })
+      if (this.$route.path !== target.name) {
+        this.$router.push({ path: target.name })
+      }
     },
+    // 删除标签
     removeTab(targetName) {
       this.$store.dispatch('tab/removeTab', targetName).then(() => {
-        this.$router.push({ path: this.$store.getters.editableTabsValue })
+        if (this.$route.path !== this.$store.getters.editableTabsValue) {
+          this.$router.push({ path: this.$store.getters.editableTabsValue })
+        }
       }).catch(error => {
         console.log(error)
       })
@@ -64,5 +65,4 @@ export default {
     height: 42px;
     border-bottom: 1px solid rgb(0, 217, 255);
 }
-
 </style>

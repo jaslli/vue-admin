@@ -1,13 +1,15 @@
 <template>
   <div class="header">
+    <!-- 左侧的面包屑 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <!-- <el-breadcrumb-item 
-        v-for='(item,index) in matched' 
-        key="item"
-      > -->
-        首页
+      <el-breadcrumb-item>
+        <router-link to="/"> 首页 </router-link>
+      </el-breadcrumb-item>
+      <el-breadcrumb-item v-for='item in breadcrumbList' :key="item.path">
+        <router-link :to="item.path"> {{ item.meta.title }} </router-link>
       </el-breadcrumb-item>
     </el-breadcrumb>
+    <!-- 右侧的个人信息 -->
     <el-dropdown>
       <span class="el-dropdown-link">
         <el-avatar size="large" :src="userInfo.avatar" />
@@ -36,8 +38,7 @@ export default {
         avatar: '',
         roles: ''
       },
-      // 路由信息
-      matched: []
+      breadcrumbList: []
     }
   },
   created() {
@@ -47,8 +48,11 @@ export default {
   },
   watch: {
     $route() {
-      this.matched = this.$route.matched
-      console.log(this.matched)
+      if (this.$route.path === '/') {
+        this.breadcrumbList = []
+      } else {
+        this.breadcrumbList = this.$route.matched;
+      }
     }
   },
   methods: {
@@ -100,5 +104,8 @@ export default {
     color: #409EFF;
     display: flex;
   }
-
+  /* 面包屑激活的颜色 */
+  .router-link-exact-active {
+    color: rgb(144, 129, 241) !important;
+  }
 </style>
