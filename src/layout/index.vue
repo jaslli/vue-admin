@@ -36,7 +36,7 @@ export default {
     background-color: #F7F9FB;
     color: #333;
     height: 100%;
-
+    padding: 0;
   }
   .el-header {
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);

@@ -3,7 +3,9 @@
     <div class="page-title">
       <span>{{ title }}</span>
     </div>
-		<slot />
+    <div class="page-context">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -26,25 +28,21 @@ export default {
 
 <style scoped>
 
-.page-contanier {
-  background: #fff;
-}
-
 .page-contanier .page-title {
-  padding: 15px 0 50px 0px;
+  background: transparent;
+  width: 100%;
+  color: #9081F1;
+  margin: 15px auto 15px 30px;
 }
 
 .page-contanier .page-title span{
   font-size: 20px;
   font-weight: bold;
-  border-left: 3px solid #9081F1;
-  padding-left: 30px;
 }
 
-/* .page-contanier .el-table {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
-} */
+.page-contanier .page-context {
+  background: #fff;
+  margin-left: 15px;
+}
 
 </style>
