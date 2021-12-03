@@ -42,7 +42,8 @@ export default {
 
 .page-contanier .page-context {
   background: #fff;
-  margin-left: 15px;
+  margin: 0px 20px;
+  min-height: 100px;
 }
 
 </style>
