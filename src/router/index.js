@@ -27,7 +27,7 @@ const createRouter = () => new VueRouter({
 const router = createRouter()
 
 // router的前置路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   NProgress.start();
   if (to.path === '/login') {
     next()
