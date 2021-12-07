@@ -7,7 +7,7 @@ import request from '@/utils/request'
  */
 export function selectAll() {
     return request({
-        url: '/category/slelctAll',
+        url: '/category/selelctAll',
         method: 'get'
     })
 }
