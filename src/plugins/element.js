@@ -27,7 +27,8 @@ import {
     Loading,
     Table,
     TableColumn,
-    Switch
+    Switch,
+    Empty
 } from 'element-ui'
 
 Vue.use(Button)
@@ -58,6 +59,7 @@ Vue.use(Loading);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Switch);
+Vue.use(Empty);
 
-Vue.prototype.$message = Message
+Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;

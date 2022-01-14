@@ -28,8 +28,7 @@ service.interceptors.response.use(
 		const res = response.data
 		if (res.code === 20000) {
 			return res
-		} 
-		else {
+		} else {
 			this.$message.error(res.message)
 		}
 	},

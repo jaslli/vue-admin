@@ -96,4 +96,7 @@ export default {
   width: 200px;
   height: 100%;
 }
+.el-menu {
+  border-right: none;
+}
 </style>

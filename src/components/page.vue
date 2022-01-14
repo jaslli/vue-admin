@@ -32,12 +32,13 @@ export default {
   background: transparent;
   width: 100%;
   color: #9081F1;
-  margin: 15px auto 15px 30px;
+  padding: 20px 0;
 }
 
 .page-contanier .page-title span{
   font-size: 20px;
   font-weight: bold;
+  margin-left: 30px;
 }
 
 .page-contanier .page-context {
